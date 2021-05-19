@@ -148,25 +148,16 @@ print(metrics.accuracy_score(y_test,y_pred))
 ### a) CV on Linear kernel
 """
 
-from sklearn.model_selection import cross_val_score
-svc=SVC(kernel='linear')
-svc
-
-"""=> C = 1.0"""
-
-scores = cross_val_score(svc, X, y, cv=10, scoring='accuracy') #cv is cross validation
-print(scores)
-
-print(scores.mean())
 
 """####Change C value"""
 
 print("Change C vaue")
 
-C_range=list(range(1,56))
+C_range=list(range(1,20))
 acc_score=[]
 
 for c in C_range:
+    print(c)
     svc = SVC(kernel='linear', C=c)
     scores = cross_val_score(svc, X, y, cv=5, scoring='accuracy')
     acc_score.append(scores.mean())
@@ -174,10 +165,10 @@ print(acc_score)
 
 import matplotlib.pyplot as plt
 
-C_values=list(range(1,56))
+C_values=list(range(1,20))
 # plot the value of C for SVM (x-axis) versus the cross-validated accuracy (y-axis)
 plt.plot(C_values,acc_score)
-plt.xticks(np.arange(0,57,2))
+plt.xticks(np.arange(0,20,2))
 plt.xlabel('Value of C for SVC')
 plt.ylabel('Cross-Validated Accuracy')
 
