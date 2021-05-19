@@ -168,7 +168,7 @@ acc_score=[]
 
 for c in C_range:
     svc = SVC(kernel='linear', C=c)
-    scores = cross_val_score(svc, X, y, cv=10, scoring='accuracy')
+    scores = cross_val_score(svc, X, y, cv=5, scoring='accuracy')
     acc_score.append(scores.mean())
 print(acc_score)
 
