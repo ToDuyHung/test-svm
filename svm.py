@@ -57,7 +57,7 @@ y = df['intent'].values
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # vectorizer = TfidfVectorizer()
-tfidfconverter = pickle.load(open('/content/tfidf.pickle', 'rb'))
+tfidfconverter = pickle.load(open('tfidf.pickle', 'rb'))
 
 def preprocess(doc, rm_short=False):
     results = []
@@ -74,7 +74,7 @@ def preprocess(doc, rm_short=False):
             results.append(result)
     return results
 
-full = pd.read_csv('/content/Output2.txt', sep='\n', header=None)
+full = pd.read_csv('Output2.txt', sep='\n', header=None)
 full = full.dropna()
 X_corp = full.values
 corpus = preprocess(X_corp, rm_short=True)
